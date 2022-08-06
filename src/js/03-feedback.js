@@ -16,11 +16,11 @@ const formText = document.querySelector("textarea");
 const key = "feedback-form-state";
 // console.log(formInput);
 
-formUpdate();
 
 feedbackForm.addEventListener("input", addToStorage);
 feedbackForm.addEventListener("submit", clearForm);
 
+formUpdate();
 
 function addToStorage(event) {
     event.preventDefault();
