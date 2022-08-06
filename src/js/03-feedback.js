@@ -18,7 +18,7 @@ const key = "feedback-form-state";
 
 formUpdate();
 
-feedbackForm.addEventListener("input", throttle(addToStorage, 1000));
+feedbackForm.addEventListener("input", addToStorage);
 feedbackForm.addEventListener("submit", clearForm);
 
 
