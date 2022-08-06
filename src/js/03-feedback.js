@@ -25,7 +25,7 @@ feedbackForm.addEventListener("submit", clearForm);
 function addToStorage(event) {
     event.preventDefault();
     let newData = event.currentTarget.elements;
-    console.dir(newData);
+    // console.dir(newData);
 
     let dataObj = {};
     
@@ -45,10 +45,12 @@ function clearForm(event) {
 }
 
 function formUpdate() {
-    const getData = JSON.parse(localStorage.getItem(key)) || "";
+    const getData = JSON.parse(localStorage.getItem(key));
     console.log(getData);
-    formInput.value = getData.mail || "";
-    formText.value = getData.text || "";
+    if (getData) {
+    formInput.value = getData.mail;
+    formText.value = getData.text;
+    }
 
 }
 
