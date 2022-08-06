@@ -47,7 +47,7 @@ function clearForm(event) {
 function formUpdate() {
     const getData = JSON.parse(localStorage.getItem(key)) || "";
     console.log(getData);
-    formInput.value = getData.mail ;
+    formInput.value = getData.mail || "";
     formText.value = getData.text || "";
 
 }
