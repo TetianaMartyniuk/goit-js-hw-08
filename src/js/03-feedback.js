@@ -7,7 +7,7 @@
 //об'єкт з полями email, message та їхніми поточними значеннями.
 //5 Зроби так, щоб сховище оновлювалось не частіше, ніж раз на 500 мілісекунд. 
 //Для цього додай до проекту і використовуй бібліотеку lodash.throttle.
-import { add, throttle } from "lodash";
+import { throttle } from "lodash";
 
 const feedbackForm = document.querySelector(".feedback-form");
 const formInput = document.querySelector("input");
@@ -18,7 +18,7 @@ const key = "feedback-form-state";
 
 formUpdate();
 
-feedbackForm.addEventListener("input", addToStorage);
+feedbackForm.addEventListener("input", throttle(addToStorage, 1000));
 feedbackForm.addEventListener("submit", clearForm);
 
 
@@ -47,8 +47,8 @@ function clearForm(event) {
 function formUpdate() {
     const getData = JSON.parse(localStorage.getItem(key));
     console.log(getData);
-    formInput.value = getData.mail;
-    formText.value = getData.text;
+    formInput.value = getData.mail || "";
+    formText.value = getData.text || "";
 
 }
 
