@@ -18,17 +18,19 @@ const key = "feedback-form-state";
 
 formUpdate();
 
-feedbackForm.addEventListener("input", throttle(addToStorage, 1000));
+feedbackForm.addEventListener("input", addToStorage);
 feedbackForm.addEventListener("submit", clearForm);
 
 
 function addToStorage(event) {
     event.preventDefault();
-    // console.dir(event);
-    const newData = event.currentTarget.elements;
+    let newData = event.currentTarget.elements;
+    console.dir(newData);
+
     let dataObj = {};
-    dataObj.email = newData.email.value;
-    dataObj.message = newData.message.value;
+    
+    dataObj.mail = newData.email.value;
+    dataObj.text = newData.message.value;
     localStorage.setItem(key, JSON.stringify(dataObj))
 
 }
@@ -44,9 +46,9 @@ function clearForm(event) {
 
 function formUpdate() {
     const getData = JSON.parse(localStorage.getItem(key));
-    // console.log(getData);
-    formInput.value = getData.email;
-    formText.value = getData.message;
+    console.log(getData);
+    formInput.value = getData.mail;
+    formText.value = getData.text;
 
 }
 
